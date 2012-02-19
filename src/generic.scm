@@ -1,12 +1,3 @@
-;; logical implication
-(define-macro (=> p q)
-  `(or (not ,p) ,q))
-
-;; logical if and only if
-(define (<=> p q)
-  (and (or p (not q))
-       (or q (not p))))
-
 (define (in-set<< lst)
   (lambda (yield)
     (for-each yield lst)))

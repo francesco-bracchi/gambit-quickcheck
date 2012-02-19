@@ -41,5 +41,10 @@
 
 (define (nothing) (generate! (lambda (yield) 'nothing)))
 
-;; (define-macro (assert! expr #!optional (message (list 'quote `(fail! ,expr))))
-;;   `(assert ,expr ,message))
+(define-structure quickcheck-exception message)
+
+(define (assert expr message)
+  (if (not expr) (raise (make-quickcheck-exception message))))
+
+
+

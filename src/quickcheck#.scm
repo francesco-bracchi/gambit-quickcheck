@@ -12,6 +12,8 @@
   assert!  
   =>
   <=>
+  all?
+  exists?
 
   in-set<<
   alt<<
@@ -42,23 +44,16 @@
   haiku
   kant
   insult
-  
   ))
   
 (define-macro (test! e #!key 
                   (max-branches +inf.0)
                   (max-depth +inf.0)
                   (ids #f))
-  (let((ex (gensym 'ex)))
-    `(with-exception-catcher 
-      (lambda (,ex) (if (quickcheck-exception? ,ex) 
-                        (display #\*)
-                        (raise ,ex)))
-      (lambda () 
-        (run-test (lambda () ,e (display #\.) (quickcheck#nothing))
-                  max-branches: ,max-branches
-                  max-depth: ,max-depth
-                  ids: ,ids)))))
+  `(run-test (lambda () ,e)
+             max-branches: ,max-branches
+             max-depth: ,max-depth
+             ids: ,ids))
 
 ;; logical implication
 (define-macro (=> p q)
@@ -75,4 +70,5 @@
 
 
 (define-macro (assert! expr #!optional (message (list 'quote `(fail! ,expr))))
-  `(assert ,expr ,message))
+;;  `(assert ,expr ,message))
+  `(if ,expr (display #\.) (display #\*)))

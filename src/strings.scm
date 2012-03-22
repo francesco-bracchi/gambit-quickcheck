@@ -89,24 +89,13 @@
                     (new-string grammar e)
                     e))
               (cdr rule))))
-
-
-(define-macro (define-grammar name)
-;; see http://www-cs-faculty.stanford.edu/~zelenski/rsg/grammars/Haiku.g
-  (##include "grammar.scm")
-  `(define ,name 
-     ,(list 'quote 
-            (call-with-input-file 
-                (string-append "grammars/" (symbol->string name) ".g")
-              read-grammar))))
   
 
-(define-grammar haiku)
-(define-grammar kant)
-(define-grammar insult)
+(include "grammars/haiku.scm")
+(include "grammars/insult.scm")
+(include "grammars/kant.scm")
       
 (current-grammar haiku)
-(define all '())
-(define reps '())
+
 
 

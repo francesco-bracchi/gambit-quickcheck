@@ -97,7 +97,7 @@ disjunctive	;
 <sentence>
 <opt-intro-clause>  <opt-certainty-clause>  <main-clause>  <opt-proof>  .	;
 <opt-two-proof>  <opt-certain-throw-clause>  <main-clause>  <opt-additional-main>  .	;
-<opt-two-proof>  <opt-certainty-clause>  <main-clause>  .	;
+<opt-two-proof>  <opt-certainty-clause>  <main-clause> . ;
 }
 
 {
@@ -188,7 +188,7 @@ our ideas	;
 our <knowledge-type>  concepts	;
 our concepts	;
 the <object-type>  objects in space and time	;
-the objects in spacee and time	;
+the objects in space and time	;
 the noumena	;
 the phenomena	;
 }

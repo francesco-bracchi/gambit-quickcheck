@@ -1,3 +1,5 @@
+(define-structure quickcheck-exception message)
+
 (define (generate! fn)
   (call/cc 
    (lambda (ret) 
@@ -17,7 +19,7 @@
      (lambda (generate!_)
        (dynamic-wind
            (lambda () (set! generate! generate!_))
-           (lambda () (fn) (nothing))
+           (lambda () (fn) (generate! nothing))
            (lambda () (set! generate! _generate!))))
      max-branches: max-branches
      max-depth: max-depth
@@ -39,12 +41,8 @@
     (_run-test fn max-branches: i max-depth: j)
     (run (+ i 1) (+ j 1))))
 
-(define (nothing) (generate! (lambda (yield) 'nothing)))
-
-(define-structure quickcheck-exception message)
-
 (define (assert expr message)
   (if (not expr) (raise (make-quickcheck-exception message))))
 
-
-
+(define (nothing y) 'nothing)
+  

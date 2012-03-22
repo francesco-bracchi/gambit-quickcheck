@@ -16,7 +16,7 @@
     
 
 (define (test-exponential)
-  (let*((val (an-exponential mean: 100 cases: cases))
+  (let*((val (an-exponential mean: 5 cases: cases))
         (j  (inexact->exact (floor val))))
     (if (< val 20)
         (vector-set! table j (+ 1 (vector-ref table j))))
@@ -32,6 +32,8 @@
           (show (- len 1))))))
 
 (define (test fn)
+  (set! _sum 0)
+  (set! table (make-vector 20 0))
   (let((mx '())
        (gamma '()))
 

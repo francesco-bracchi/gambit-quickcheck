@@ -3,6 +3,8 @@
 
 (include "sort.scm")
 
+(random-source-randomize! default-random-source)
+
 (define (a-random-list #!key (cases 100))
   (let((len (in-range stop: cases)))
     (let loop ((j 0) (rs '()))

@@ -1,6 +1,8 @@
 (load "../src/quickcheck")
 (include "../src/quickcheck#.scm")
 
+(random-source-randomize! default-random-source)
+
 (test! (let((a (a-string grammar: kant)))
          (display a)
 	 (newline)))
